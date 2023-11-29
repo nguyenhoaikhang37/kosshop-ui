@@ -30,328 +30,182 @@
     <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./src/css/style.css" />
 
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            keyframes: {
+              // zoom animation infinity
+              zoom2: {
+                "0%": { transform: "scale(1)" },
+                "50%": { transform: "scale(1.2)" },
+                "100%": { transform: "scale(1)" },
+              },
+            },
+            animation: {
+              zoom2: "zoom2 1s linear infinite",
+            },
+            colors: {
+              primary: "#1074a5",
+              secondary: "#cf3434",
+              dark: "#333",
+              heading: "#505F76",
+              arrow: "#c5c4c4",
+              greyLight: "#f2f2f2",
+              greyEE: "#d5dfee",
+              greyC4: "#c5c4c4",
+              greyBg: "#ddd",
+              fbColor: "#4267b2",
+              youtubeColor: "#c4302b",
+            },
+            boxShadow: {
+              box: "0 3px 5px -1px rgba(0,0,0,.08), 0 6px 10px 0 rgba(0,0,0,.08), 0 1px 18px 0 rgba(0,0,0,.08)",
+              header: "1px 1px 5px rgba(0,0,0,.15)",
+            },
+          },
+          screens: {
+            sm: "640px",
+            // => @media (min-width: 640px) { ... }
+
+            md: "768px",
+            // => @media (min-width: 768px) { ... }
+
+            lg: "992px",
+            // => @media (min-width: 992px) { ... }
+
+            xl: "1200px",
+            // => @media (min-width: 1200px) { ... }
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        html {
+          font-family: "Roboto", sans-serif;
+        }
+      }
+
+      @layer components {
+        .myContainer {
+          @apply max-w-[650px] lg:max-w-[1146px] mx-auto px-[15px] sm:px-[20px];
+        }
+
+        .bg-gradient {
+          background: linear-gradient(90deg, #1074a5 4.72%, #1799d9 95.8%) 000;
+        }
+
+        .side-dialog {
+          @apply fixed top-0 right-0 bottom-0 w-[300px] transition-transform ease-in-out transform bg-white shadow-lg;
+          z-index: 1000;
+          transform: translateX(100%);
+        }
+
+        .backdrop {
+          @apply fixed top-0 left-0 right-0 bottom-0 w-full h-full transition-all ease-in-out z-[900];
+          background-color: rgba(0, 0, 0, 0.6);
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        .side-dialog.show {
+          transform: translateX(0);
+        }
+
+        .side-dialog.show ~ .backdrop {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        /* Style for section heading */
+        .section__heading {
+          font-size: 17.6px;
+          line-height: 40px;
+          height: 40px;
+          @apply text-white w-full lg:w-[300px] xl:w-[400px] relative pl-[60px] font-bold;
+        }
+
+        .section__heading::before {
+          transform: skewX(-40deg);
+          border-radius: 5px;
+          content: "";
+          position: absolute;
+          height: 100%;
+          left: 15px;
+          right: 15px;
+          z-index: -1;
+          @apply bg-gradient;
+        }
+
+        .section__heading::after {
+          content: url(https://www.kosshop.vn/images/logo-icon.svg);
+          position: absolute;
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          display: block;
+          border: 5px solid #fff;
+          z-index: 1;
+          bottom: 10px;
+          text-align: center;
+          font-size: 2.8rem;
+          line-height: 46px;
+          text-indent: 0;
+          left: 0;
+          @apply bg-primary;
+        }
+
+        /* Discount label */
+        .discount-label {
+          width: 100px;
+          height: 100px;
+          display: block;
+          border-radius: 50%;
+          position: absolute;
+          top: -50px;
+          right: -50px;
+          line-height: 45px;
+          padding: 50px 50px 5px 10px;
+          z-index: 100;
+          @apply text-white bg-secondary;
+        }
+
+        /* Custom slick library */
+        .slick-prev {
+          position: absolute;
+          z-index: 100;
+          left: 0;
+          top: 50%;
+          transform: translate(-100%, -50%);
+          padding: 16px;
+          font-size: 1.6rem;
+          @apply text-arrow;
+        }
+
+        .slick-next {
+          position: absolute;
+          z-index: 100;
+          right: 0;
+          top: 50%;
+          transform: translate(100%, -50%);
+          padding: 16px;
+          font-size: 1.6rem;
+          @apply text-arrow;
+        }
+      }
+    </style>
+
     <!-- Scripts -->
-    <script src="./src/js/loadTemplate.js"></script>
-    <script src="./src/js/script.js" defer></script>
+    <script src="./loadTemplates.js"></script>
   </head>
   <body>
     <!-- HEADER -->
-    <header id="header" class="fixed top-0 left-0 right-0 bg-gradient h-[56px] lg:h-[76px] z-[999]">
-      <div class="flex items-center h-full gap-5 myContainer">
-        <div>
-          <h1 class="hidden">KOS Shop - Cửa Hàng Bán Vali kéo, Balo, Túi xách cao cấp</h1>
-          <a class="flex items-center h-10" href="/">
-            <img
-              src="https://cdn.kosshop.vn/upload/theme/images/2020/08/17/img75.png"
-              alt="KOS Shop - Cửa Hàng Bán Vali kéo, Balo, Túi xách cao cấp"
-              width="130"
-              height="54"
-            />
-          </a>
-        </div>
-
-        <a rel="nofollow" class="py-2 text-white relative top-[10px] hidden xl:block" href="https://www.kosshop.vn/t/">
-          <i class="fa fa-newspaper"></i>
-          <span class="ml-2">KINH NGHIỆM HAY</span>
-        </a>
-
-        <a
-          rel="nofollow"
-          class="hidden xl:block h-full bg-secondary leading-[56px] lg:leading-[76px] text-white px-2"
-          href="https://www.kosshop.vn/sale/"
-        >
-          <strong class="block font-normal animate-zoom2 relative top-[10px]"> SALE </strong>
-        </a>
-
-        <form class="hidden lg:flex w-[240px]">
-          <input
-            type="text"
-            placeholder="Bạn cần tìm sản phẩm gì..."
-            class="pl-[15px] pr-[5px] py-[5px] text-sm flex-1 rounded-l-[3px]"
-            value=""
-          />
-          <button class="hidden md:block w-[38px] h-[38px] bg-dark rounded-r-[3px]" title="Tìm kiếm">
-            <i class="text-white fa fa-search"></i>
-          </button>
-        </form>
-
-        <div class="flex ml-auto">
-          <div
-            class="hidden mx-[20px] lg:mx-[10px] gap-5 text-white transition-all ease-linear border border-white rounded-md lg:flex hover:text-primary hover:bg-white"
-          >
-            <a rel="nofollow" href="tel:18008050" class="py-1 xl:px-5 lg:px-16">
-              <p class="text-xs">Hotline miễn phí</p>
-              <p>
-                <i class="fa-solid fa-phone"></i>
-                <strong class="text-sm">18008050</strong>
-              </p>
-            </a>
-          </div>
-
-          <button class="block px-[20px] lg:px-[10px] py-3 cursor-pointer menu-btn lg:hidden" title="Tìm kiếm">
-            <i class="text-xl text-white fa fa-search"></i>
-          </button>
-
-          <a rel="nofollow" href="tel:18008050" class="flex items-center px-[20px] lg:px-[10px] text-white">
-            <i class="text-xl fa-solid fa-location-dot"></i>
-            <strong class="hidden ml-1 font-normal md:block">Cửa hàng</strong>
-          </a>
-
-          <button rel="nofollow" class="relative px-[20px] lg:px-[10px]">
-            <a href="/cart">
-              <i class="text-xl text-white fa fa-shopping-cart"></i>
-              <span
-                class="absolute top-[4px] right-[12px] lg:right-[0] w-[18px] h-[18px] rounded-full bg-secondary flex items-center justify-center text-white text-[11px]"
-              >
-                1
-              </span>
-            </a>
-          </button>
-
-          <button class="block pl-[20px] lg:pl-[10px] cursor-pointer menu-btn js-toggle xl:hidden" toggle-target="#menuBar">
-            <i class="text-xl text-white fa-solid fa-bars"></i>
-          </button>
-
-          <!-- Side dialog -->
-          <div class="block side-dialog xl:hidden hide" id="menuBar">
-            <!-- Header -->
-            <div class="flex items-center justify-between bg-gradient h-[50px]">
-              <div class="flex items-center">
-                <button class="py-3 pl-5 pr-3" title="Tìm kiếm">
-                  <i class="text-xl text-white fa fa-search"></i>
-                </button>
-
-                <button rel="nofollow" class="relative p-3">
-                  <a href="/cart">
-                    <i class="text-xl text-white fa fa-shopping-cart"></i>
-                    <span
-                      class="absolute top-[5px] right-[6px] w-[18px] h-[18px] rounded-full bg-secondary flex items-center justify-center text-white text-[11px]"
-                    >
-                      1
-                    </span>
-                  </a>
-                </button>
-              </div>
-
-              <button toggle-target="#menuBar" class="py-3 pl-3 pr-5 js-toggle">
-                <i class="text-xl text-white fa fa-times"></i>
-              </button>
-            </div>
-
-            <nav class="relative h-full">
-              <ul class="h-[calc(100%-50px-107px)] py-5 pl-5 overflow-y-auto">
-                <li>
-                  <a class="flex items-center h-10" href="https://www.kosshop.vn/sale/">
-                    <span style="display: flex">
-                      <strong class="animate-zoom2" style="color: rgb(207, 52, 52)">SALE</strong>
-                    </span>
-                  </a>
-                </li>
-                <div class="h-[1px] w-[80%] bg-primary"></div>
-                <li>
-                  <a class="flex items-center justify-between h-10" rel="" href="https://www.kosshop.vn/vali-keo/">
-                    VALI KÉO
-                    <i class="flex items-center h-full px-5 fa fa-chevron-right"></i>
-                  </a>
-                  <ul class="pl-5">
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Thương hiệu
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-ricardo/">Vali Ricardo</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-roncato/">Vali Roncato</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/heys/">Vali Heys</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/modo/">Vali Modo</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-skyway/">Vali Skyway</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Chất liệu
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-sieu-nhe/">Vali kéo siêu nhẹ</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-nhua/">Vali kéo nhựa</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-vo-nhua-deo/">Vali kéo nhựa dẻo</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-vo-nhua-cung/"> Vali kéo nhựa cứng </a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-vai-du-cao-cap/">Vali kéo vải</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Loại khóa
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-khoa-sap-nap-bat/">Vali khóa sập</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-khoa-so/">Vali khóa số</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Tính năng
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-co-ngan-dung-laptop/"
-                            >Vali có ngăn đựng laptop</a
-                          >
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-co-sac-dien-thoai/">Vali có cổng sạc</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-co-banh-xe/">Vali bánh xe</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Đối tượng
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-tre-em/">Vali kéo trẻ em</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-nu/">Vali kéo nữ</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-du-hoc/">Vali kéo du học</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-nam/">Vali kéo nam</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-doanh-nhan/">Vali kéo doanh nhân</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Màu
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-mau-cam/">Vali màu cam</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-mau-bac/">Vali màu bạc</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-mau-den/">Vali màu đen</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-mau-tim/">Vali màu tím</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Kích thước
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-xach-tay-len-may-bay/">Vali kéo size S</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-co-trung-vua/">Vali kéo size M</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-keo-loai-co-lon-to/">Vali kéo size L</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-size-20-inch/">Vali kéo size 20 inch</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-size-24-inch/">Vali kéo size 24 inch</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-size-28-inch/">Vali kéo size 28 inch</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vali-size-26-inch/">Vali kéo size 26 inch</a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li>
-                      <span class="flex items-center justify-between h-10">
-                        Phụ kiện
-                        <i class="flex items-center h-full px-5 text-xs fa fa-chevron-right"></i>
-                      </span>
-                      <ul class="pl-5">
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/o-khoa-vali/">Ổ khóa vali</a>
-                        </li>
-                        <li>
-                          <a class="flex items-center h-10" href="https://www.kosshop.vn/vo-boc-vali/">Vỏ bọc vali</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                <div class="h-[1px] w-[80%] bg-primary"></div>
-                <li rel="nofollow">
-                  <a class="flex items-center h-10" href="https://www.kosshop.vn/t/">KINH NGHIỆM HAY</a>
-                </li>
-              </ul>
-
-              <div class="absolute bottom-[50px] left-0 w-full px-5 py-4 transition-all ease-in-out bg-white border-t border-greyLight">
-                <a
-                  rel="nofollow"
-                  href="tel:18008050"
-                  class="border border-dark py-3 rounded-[4px] block text-center hover:bg-dark hover:text-white"
-                >
-                  <p class="text-sm">Hotline miễn phí</p>
-                  <p class="text-xl">
-                    <i class="fa-solid fa-phone"></i>
-                    <strong>18008050</strong>
-                  </p>
-                </a>
-              </div>
-            </nav>
-          </div>
-
-          <!-- Backdrop -->
-          <div class="block js-toggle backdrop xl:hidden" toggle-target="#menuBar"></div>
-        </div>
-      </div>
-    </header>
-    <!-- <script>
+    <header id="header" class="fixed top-0 left-0 right-0 bg-gradient h-[56px] lg:h-[76px] z-[999]"></header>
+    <script>
       load("#header", "./src/templates/header.html");
-    </script> -->
+    </script>
 
     <main class="pt-[56px] lg:pt-[76px] xl:pt-[116px]">
       <div id="category" class="fixed top-[56px] xl:top-[76px] left-0 right-0 bg-white shadow-header z-[998] hidden xl:block">
@@ -2039,195 +1893,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer id="footer" class="text-sm text-heading bg-[#F2F7FF]">
-      <div class="py-6">
-        <div class="myContainer">
-          <div class="grid grid-cols-1 xl:grid-cols-12 xl:gap-[30px]">
-            <div class="col-span-1 xl:col-span-4">
-              <h3 class="my-4 text-xl font-semibold">VỀ KOS SHOP</h3>
-
-              <p class="mb-[14px]">Công ty TNHH Thời Trang KOS - MST: 0311 988 978 cấp ngày: 02 tháng 10 năm 2012. Nơi cấp: TPHCM</p>
-
-              <ul class="flex text-[13px] gap-8">
-                <li>
-                  <a class="py-2" rel="nofollow" href="https://www.kosshop.vn/lien-he/?location=1">
-                    <strong>
-                      SHOWROOMS HÀ NỘI
-                      <i class="ml-1 fa fa-chevron-right"></i>
-                    </strong>
-                  </a>
-                </li>
-                <li>
-                  <a class="py-2" rel="nofollow" href="https://www.kosshop.vn/lien-he/?location=2">
-                    <strong>
-                      SHOWROOMS TPHCM
-                      <i class="ml-1 fa fa-chevron-right"></i>
-                    </strong>
-                  </a>
-                </li>
-              </ul>
-
-              <a
-                title="hotline"
-                rel="nofollow"
-                href="tel:18008050"
-                class="inline-block px-6 py-2 mt-4 text-base font-bold rounded-full bg-greyEE"
-              >
-                <i class="fas fa-phone"></i>
-                Hotline 18008050
-              </a>
-
-              <div class="mt-4">
-                <p><a class="underline" href="/ve-chung-toi/">Giới thiệu</a></p>
-                <p class="mt-1">T2 - Chủ nhật | 09:00 - 21:00</p>
-              </div>
-
-              <div class="mt-4 flex gap-[10px]">
-                <a
-                  title="facebook kosshop"
-                  class="w-[45px] h-[45px] flex items-center justify-center bg-fbColor rounded-full"
-                  target="_blank"
-                  rel="nofollow"
-                  href="https://www.facebook.com/kosshop.vn/"
-                >
-                  <i class="text-xl text-white fa-brands fa-facebook-f"></i>
-                </a>
-                <a
-                  title="email kosshop"
-                  class="w-[45px] h-[45px] flex items-center justify-center bg-dark rounded-full"
-                  target="_blank"
-                  rel="nofollow"
-                  href="mailto:support@kosshop.vn"
-                >
-                  <i class="text-xl text-white fa fa-envelope"></i>
-                </a>
-                <a
-                  title="youtube kosshop"
-                  class="w-[45px] h-[45px] flex items-center justify-center bg-youtubeColor rounded-full"
-                  target="_blank"
-                  rel="nofollow"
-                  href="https://www.youtube.com/user/kosshopdotvn"
-                >
-                  <i class="text-xl text-white fa-brands fa-youtube"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-span-1 xl:col-span-2">
-              <h3 class="my-4 text-xl font-semibold">SẢN PHẨM</h3>
-
-              <ul class="-mt-2">
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/vali-keo/">Vali kéo</a></li>
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/balo-dep/">Balo</a></li>
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/balo-du-lich/">Balo du lịch</a></li>
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/balo-dung-laptop/">Balo đựng laptop</a></li>
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/vi-da-bop-da-nam/">Ví da nam</a></li>
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/tui-xach-nam/">Túi xách nam</a></li>
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/cap-da-nam/">Cặp da nam</a></li>
-                <li><a class="block py-2 underline" href="https://www.kosshop.vn/phu-kien-do-du-lich/">Phụ kiện du lịch</a></li>
-                <li>
-                  <a class="block py-2 underline" href="https://www.kosshop.vn/t/goi-y-dia-chi-pho-ban-vali-keo-o-ha-noi-dang-tin-cay.html"
-                    >Vali kéo Hà Nội</a
-                  >
-                </li>
-              </ul>
-            </div>
-            <div class="col-span-1 xl:col-span-3">
-              <h3 class="my-4 text-xl font-semibold">DỊCH VỤ KHÁCH HÀNG</h3>
-
-              <ul class="-mt-2">
-                <li class="block py-2 underline">
-                  <a rel="nofollow" href="https://www.kosshop.vn/mua-hang-online/">Hướng dẫn mua hàng online</a>
-                </li>
-                <li class="block py-2 underline">
-                  <a rel="nofollow" href="https://www.kosshop.vn/chinh-sach-doi-tra-hang/">Chính sách đổi trả hàng</a>
-                </li>
-                <li class="block py-2 underline">
-                  <a rel="nofollow" href="https://www.kosshop.vn/chinh-sach-van-chuyen-giao-nhan/">Chính sách vận chuyển</a>
-                </li>
-                <li class="block py-2 underline">
-                  <a rel="nofollow" href="https://www.kosshop.vn/chinh-sach-the-thanh-vien-moi-kos/">Chính sách thẻ thành viên</a>
-                </li>
-                <li class="block py-2 underline">
-                  <a rel="nofollow" href="https://www.kosshop.vn/chinh-sach-bao-hanh/">Chính sách bảo hành</a>
-                </li>
-                <li class="block py-2 underline">
-                  <a rel="nofollow" href="https://www.kosshop.vn/phuong-thuc-thanh-toan/">Phương thức thanh toán</a>
-                </li>
-                <li class="block py-2 underline"><a rel="nofollow" href="https://www.kosshop.vn/lien-he/">Liên hệ</a></li>
-              </ul>
-            </div>
-            <div class="col-span-1 xl:col-span-3">
-              <h4 class="my-4 text-sm font-semibold">Chấp nhận thanh toán</h4>
-              <img
-                loading="lazy"
-                src="https://cdn.kosshop.vn/upload/theme/images/2020/08/02/img70.png"
-                alt="kosshop.vn"
-                width="256"
-                height="27"
-              />
-
-              <h4 class="my-4 text-sm font-semibold">Đối tác uy tín</h4>
-              <div class="flex gap-2">
-                <a rel="nofollow" href="http://online.gov.vn/Home/WebDetails/5814" target="_blank">
-                  <img
-                    loading="lazy"
-                    src="https://cdn.kosshop.vn/upload/theme/images/2020/09/22/1600751588img42.png"
-                    alt="kosshop.vn"
-                    width="127"
-                    height="64"
-                  />
-                </a>
-
-                <span>
-                  <style>
-                    .Vendor_content__3UTkp {
-                      max-height: 400px;
-                    }
-                    .Popup_gallery__1_Czc .slick-prev {
-                      z-index: 999 !important;
-                    }
-                  </style>
-                  <a
-                    rel="nofollow"
-                    href="https://www.dmca.com/Protection/Status.aspx?ID=fccea19c-c8eb-4092-b9f4-a7ef52639cf6&amp;refurl=https://www.kosshop.vn/"
-                    title="DMCA.com Protection Status"
-                    class="dmca-badge"
-                  >
-                    <img
-                      loading="lazy"
-                      alt="DMCA.com Protection Status"
-                      src="https://images.dmca.com/Badges/DMCA_logo-grn-btn100w.png?ID=fccea19c-c8eb-4092-b9f4-a7ef52639cf6"
-                  /></a>
-                  <script src="https://images.dmca.com/Badges/DMCABadgeHelper.min.js"></script>
-                  <style>
-                    .footer_b2b {
-                      position: absolute;
-                      margin-left: -130px;
-                      margin-top: 30px;
-                    }
-                    @media only screen and (max-width: 600px) {
-                      .footer_b2b {
-                        position: relative !important;
-                        margin-left: 0px !important;
-                      }
-                    }
-                  </style>
-                </span>
-              </div>
-
-              <h4 class="my-4 text-sm font-semibold">Dành cho doanh nghiệp / B2B / Bán sỉ</h4>
-
-              <p>Email: tin@kosshop.vn</p>
-              <p>Điện thoại: 098 641 0704 (Zalo, Telegram, Whatsapp)</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="p-5 text-center bg-[#d1dff4]">
-        <p>© Copyright 2023 by KOS Shop.</p>
-        <p>KOS Shop bán vali kéo, túi xách cặp da nam cao cấp hàng hiệu, balo chính hãng cao cấp.</p>
-      </div>
-    </footer>
+    <footer id="footer" class="text-sm text-heading bg-[#F2F7FF]"></footer>
     <script>
       load("#footer", "./src/templates/footer.html");
     </script>
@@ -2260,5 +1926,7 @@
         });
       });
     </script>
+
+    <script type="module" src="/main.js"></script>
   </body>
 </html>
