@@ -38,7 +38,7 @@
     <script src="./src/js/script.js" defer></script>
   </head>
   <body>
-    <!-- Header -->
+    <!-- HEADER -->
     <header id="header" class="fixed top-0 left-0 right-0 bg-gradient h-[56px] lg:h-[76px] z-[999]">
       <div class="flex items-center h-full gap-5 myContainer">
         <div>
@@ -97,7 +97,7 @@
 
           <a rel="nofollow" href="tel:18008050" class="flex items-center px-[20px] lg:px-[10px] text-white">
             <i class="text-xl fa-solid fa-location-dot"></i>
-            <strong class="ml-1 font-normal">Cửa hàng</strong>
+            <strong class="hidden ml-1 font-normal md:block">Cửa hàng</strong>
           </a>
 
           <button rel="nofollow" class="relative px-[20px] lg:px-[10px]">
@@ -352,19 +352,205 @@
         </div>
       </div>
     </header>
-    <!-- <script>
+    <script>
       load("#header", "./src/templates/header.html");
-    </script> -->
+    </script>
 
-    <main class="pt-[96px] lg:pt-[116px]">
+    <main class="pt-[56px] lg:pt-[76px] xl:pt-[116px]">
       <!-- BANNER -->
       <section>
-        <div class="fixed top-[56px] lg:top-[76px] left-0 right-0 bg-white shadow-header z-[998]">
-          <div class="myContainer">
+        <div id="category" class="fixed top-[56px] xl:top-[76px] left-0 right-0 bg-white shadow-header z-[998] hidden xl:block">
+          <div class="relative myContainer">
             <ul class="flex">
-              <li class="flex items-center px-6 py-2 font-bold cursor-pointer text-heading">
+              <li class="relative flex items-center py-2 pr-6 font-bold cursor-pointer group text-heading basis-1/4">
                 <i class="mr-2 fa-regular fa-rectangle-list"></i>
                 Danh Mục Sản Phẩm
+
+                <ul class="absolute left-0 hidden w-full bg-white rounded-md top-full shadow-header group-hover:block">
+                  <li class="mega-menu-item relative px-4 py-[14px] hover:bg-primary hover:text-white transition-all ease-in-out">
+                    <a href="/danh-muc-san-pham.html" class="flex items-center justify-between">
+                      <strong>VALI KÉO</strong>
+                      <i class="fa fa-chevron-right"></i>
+                    </a>
+                  </li>
+                  <li class="mega-menu-item relative px-4 py-[14px] hover:bg-primary hover:text-white transition-all ease-in-out">
+                    <a href="/danh-muc-san-pham.html">
+                      <strong>VALI MADE IN ITALY</strong>
+                    </a>
+                  </li>
+                  <li class="mega-menu-item relative px-4 py-[14px] hover:bg-primary hover:text-white transition-all ease-in-out">
+                    <a class="flex items-center justify-between" href="https://www.kosshop.vn/balo-dep/"
+                      ><strong>BALO </strong><i class="fa fa-chevron-right"></i
+                    ></a>
+                  </li>
+                  <li class="mega-menu-item relative px-4 py-[14px] hover:bg-primary hover:text-white transition-all ease-in-out">
+                    <a class="flex items-center justify-between" href="/danh-muc-san-pham.html"
+                      ><strong>VÍ DA NAM</strong><i class="fa fa-chevron-right"></i
+                    ></a>
+                  </li>
+                  <li class="mega-menu-item relative px-4 py-[14px] hover:bg-primary hover:text-white transition-all ease-in-out">
+                    <a class="flex items-center justify-between" href="/danh-muc-san-pham.html"
+                      ><strong>CẶP DA NAM</strong><i class="fa fa-chevron-right"></i
+                    ></a>
+                  </li>
+                  <li class="mega-menu-item relative px-4 py-[14px] hover:bg-primary hover:text-white transition-all ease-in-out">
+                    <a class="flex items-center justify-between" href="/danh-muc-san-pham.html"
+                      ><strong>TÚI XÁCH NAM</strong><i class="fa fa-chevron-right"></i
+                    ></a>
+                  </li>
+                  <li class="mega-menu-item relative px-4 py-[14px] hover:bg-primary hover:text-white transition-all ease-in-out">
+                    <a class="flex items-center justify-between" href="/danh-muc-san-pham.html"
+                      ><strong>PHỤ KIỆN DU LỊCH</strong><i class="fa fa-chevron-right"></i
+                    ></a>
+                  </li>
+                  <!-- MEGA MENU -->
+                  <div class="absolute top-0 left-full w-[830px] px-5 py-4 bg-white shadow-header z-[999] hidden mega-menu">
+                    <div class="grid grid-cols-4 gap-x-4 gap-y-6">
+                      <div class="flex flex-col">
+                        <strong class="text-primary pb-[10px] border-b-2 border-primary block font-normal">Chất liệu</strong>
+                        <ul class="flex flex-col gap-1 mt-2">
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-da-nam/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi da nam</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="flex flex-col">
+                        <strong class="text-primary pb-[10px] border-b-2 border-primary block font-normal">Chất liệu</strong>
+                        <ul class="flex flex-col gap-1 mt-2">
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-da-nam/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi da nam</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="flex flex-col">
+                        <strong class="text-primary pb-[10px] border-b-2 border-primary block font-normal">Chất liệu</strong>
+                        <ul class="flex flex-col gap-1 mt-2">
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-da-nam/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi da nam</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="flex flex-col">
+                        <strong class="text-primary pb-[10px] border-b-2 border-primary block font-normal">Chất liệu</strong>
+                        <ul class="flex flex-col gap-1 mt-2">
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-da-nam/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi da nam</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="flex flex-col">
+                        <strong class="text-primary pb-[10px] border-b-2 border-primary block font-normal">Chất liệu</strong>
+                        <ul class="flex flex-col gap-1 mt-2">
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-da-nam/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi da nam</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                          <li>
+                            <a
+                              class="flex items-center gap-2 font-normal transition-all ease-in-out text-dark hover:text-primary hover:translate-x-1"
+                              href="https://www.kosshop.vn/tui-xach-nam-vai/"
+                            >
+                              <i class="text-sm fa fa-caret-right"></i>
+                              <span>Túi xách nam vải</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </ul>
               </li>
               <li class="flex items-center px-6 py-2 font-bold cursor-pointer text-heading">
                 <i class="mr-2 fa-solid fa-percent"></i>
@@ -385,20 +571,35 @@
             </ul>
           </div>
         </div>
-        <div class="grid grid-cols-12 mt-4 myContainer">
-          <div class="col-span-3"></div>
-          <div class="col-span-9">
+        <script>
+          load("#category", "/src/templates/category.html");
+        </script>
+
+        <div class="grid grid-cols-12 xl:myContainer">
+          <div class="xl:col-span-3"></div>
+          <div class="col-span-12 xl:col-span-9">
             <div class="grid grid-cols-12">
-              <div class="col-span-9">
-                <a href="https://www.kosshop.vn/sale/">
-                  <img
-                    src="https://cdn.kosshop.vn/upload/theme/images/2023/06/20/1687198988img42.jpg"
-                    alt="kosshop"
-                    class="block w-full h-full"
-                  />
-                </a>
+              <div class="relative col-span-12 xl:col-span-9 slider-banner">
+                <div>
+                  <a href="https://www.kosshop.vn/sale/">
+                    <img
+                      src="https://cdn.kosshop.vn/upload/theme/images/2023/11/27/1701049889img83.jpg"
+                      alt="kosshop"
+                      class="block w-full h-[366px] xl:h-full"
+                    />
+                  </a>
+                </div>
+                <div>
+                  <a href="https://www.kosshop.vn/sale/">
+                    <img
+                      src="https://cdn.kosshop.vn/upload/theme/images/2023/06/20/1687198988img42.jpg"
+                      alt="kosshop"
+                      class="block w-full h-[366px] xl:h-full"
+                    />
+                  </a>
+                </div>
               </div>
-              <div class="flex flex-col col-span-3 gap-2">
+              <div class="flex-col hidden col-span-3 gap-2 xl:flex">
                 <a class="flex-1" href="https://www.kosshop.vn/tui-dung-do-packing-cube-heys-earth-tones.html">
                   <img
                     src="https://cdn.kosshop.vn/upload/theme/images/2022/10/10/1665380981img12.jpg"
@@ -568,6 +769,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -605,6 +813,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -652,6 +867,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -691,9 +913,16 @@
                 </div>
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
-                  <del class="block text-sm text-heading">3,100,000₫</del>
-                  <strong class="hidden">-45%</strong>
                 </p>
+                <del class="block text-sm text-heading">3,100,000₫</del>
+                <strong class="hidden">-45%</strong>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -731,6 +960,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -778,6 +1014,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
             </div>
 
@@ -836,6 +1079,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -873,6 +1123,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -920,6 +1177,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -959,9 +1223,16 @@
                 </div>
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
-                  <del class="block text-sm text-heading">3,100,000₫</del>
-                  <strong class="hidden">-45%</strong>
                 </p>
+                <del class="block text-sm text-heading">3,100,000₫</del>
+                <strong class="hidden">-45%</strong>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -999,6 +1270,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -1046,6 +1324,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
             </div>
           </div>
@@ -1127,6 +1412,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -1164,6 +1456,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -1211,6 +1510,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -1250,9 +1556,16 @@
                 </div>
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
-                  <del class="block text-sm text-heading">3,100,000₫</del>
-                  <strong class="hidden">-45%</strong>
                 </p>
+                <del class="block text-sm text-heading">3,100,000₫</del>
+                <strong class="hidden">-45%</strong>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -1290,6 +1603,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
 
               <article
@@ -1337,6 +1657,13 @@
                 <p class="mt-3">
                   <strong class="text-primary">4,200,000₫</strong>
                 </p>
+                <div class="flex items-center gap-1 mt-1">
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <i class="text-xs text-yellow-400 fa-solid fa-star"></i>
+                  <span class="text-xs text-dark">12 đánh giá</span>
+                </div>
               </article>
             </div>
 
@@ -1851,7 +2178,8 @@
       </section>
     </main>
 
-    <footer class="text-sm text-heading bg-[#F2F7FF]">
+    <!-- FOOTER -->
+    <footer id="footer" class="text-sm text-heading bg-[#F2F7FF]">
       <div class="py-6">
         <div class="myContainer">
           <div class="grid grid-cols-1 xl:grid-cols-12 xl:gap-[30px]">
@@ -2040,6 +2368,9 @@
         <p>KOS Shop bán vali kéo, túi xách cặp da nam cao cấp hàng hiệu, balo chính hãng cao cấp.</p>
       </div>
     </footer>
+    <script>
+      load("#footer", "/src/templates/footer.html");
+    </script>
 
     <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
@@ -2047,6 +2378,14 @@
 
     <script type="text/javascript">
       $(window).ready(function () {
+        $(".slider-banner").slick({
+          dots: true,
+          infinite: true,
+          speed: 500,
+          autoplaySpeed: 4000,
+          // autoplay: true,
+          arrows: false,
+        });
         $(".slider-brand").slick({
           dots: false,
           infinite: true,
