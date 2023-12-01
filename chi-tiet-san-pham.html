@@ -257,10 +257,165 @@
               </div>
 
               <div class="flex items-center gap-2 pl-4 bg-greyLight text-primary">
-                <a href="#!" class="flex items-center gap-6">
+                <button id="gallery-button" class="flex items-center gap-6">
                   <i class="text-lg fa fa-search-plus"></i>
                   <span>BẤM PHÓNG TO NHIỀU HÌNH SẢN PHẨM</span>
-                </a>
+                </button>
+                <!-- Gallery Dialog -->
+                <div id="gallery-dialog" class="modal full">
+                  <!-- Modal content -->
+                  <div class="modal-content full">
+                    <div class="flex items-center justify-between bg-slate-100 pt-2">
+                      <div></div>
+
+                      <div class="flex items-center gap-4">
+                        <button class="uppercase text-primary pb-2 font-bold border-b-4 border-primary">Hình sản phẩm</button>
+                        <button class="uppercase text-dark pb-2 border-b-4 border-[transparent]">Hình thực tế</button>
+                        <button class="uppercase text-dark pb-2 border-b-4 border-[transparent]">Video sản phẩm</button>
+                      </div>
+
+                      <span class="js-gallery-close p-2 cursor-pointer"><i class="text-primary text-xl fa-solid fa-xmark"></i></span>
+                    </div>
+                    <div class="modal-body mt-8">
+                      <ul class="slider slider-single relative max-w-[740px] mt-4 mx-auto">
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-elite-size-s-20-inch-titanium923.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium1697.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium8887.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium1802.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium7124.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium1329.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium3384.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium9509.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[740px] h-[494px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2023/11/vali-roncato-elite-size-s-20-inch-titanium9570.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                      </ul>
+                      <ul class="slider slider-nav mt-4 max-w-[940px] mx-auto">
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-elite-size-s-20-inch-titanium923.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium1697.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium8887.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium1802.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium7124.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium1329.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium3384.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2022/05/vali-roncato-e-lite-size-s-20-inch-titanium9509.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                        <li class="block w-[112.5px] h-[75px]">
+                          <img
+                            src="https://cdn.kosshop.vn/upload/plupload/2023/11/vali-roncato-elite-size-s-20-inch-titanium9570.jpg"
+                            alt=""
+                            class="block w-full h-full"
+                          />
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="p-4 flex justify-center">
+                      <button class="js-gallery-close text-primary hover:underline flex items-center">
+                        <i class="mr-2 fa-solid fa-arrow-left-long"></i>
+                        Xem tiếp sản phẩm
+                      </button>
+                    </div>
+                  </div>
+                </div>
                 <span class="ml-auto px-4 py-2 bg-[#ebeaea] text-dark">5/9</span>
               </div>
 
@@ -277,9 +432,68 @@
                   <span class="text-xs">Hình sản phẩm</span>
                 </li>
                 <li class="w-[108px]">
-                  <a href="#!" class="text-[#0000ee] flex items-center text-center flex-col gap-2 bg-blueLight py-4">
+                  <button id="specifications-button" class="text-[#0000ee] flex items-center text-center flex-col gap-2 bg-blueLight py-4">
                     <i class="fa fa-info-circle"></i><span class="underline text-sm">Thông số kỹ thuật</span>
-                  </a>
+                  </button>
+                  <!-- Specifications Dialog -->
+                  <div id="specifications-dialog" class="modal">
+                    <!-- Modal content -->
+                    <div class="modal-content">
+                      <div class="flex items-center justify-between p-2 bg-slate-100">
+                        <div></div>
+
+                        <p class="uppercase text-primary text-xl font-bold">THÔNG SỐ KỸ THUẬT</p>
+
+                        <span class="js-specifications-close p-2 cursor-pointer"
+                          ><i class="text-primary text-xl fa-solid fa-xmark"></i
+                        ></span>
+                      </div>
+                      <div class="modal-body">
+                        <table class="basic-table">
+                          <tbody>
+                            <tr>
+                              <th>Chất liệu</th>
+                              <td>PET &amp; PC FILM</td>
+                            </tr>
+                            <tr>
+                              <th>Model</th>
+                              <td>Ricardo&nbsp;Tioga 2.0</td>
+                            </tr>
+                            <tr>
+                              <th>Màu</th>
+                              <td>Wine</td>
+                            </tr>
+                            <tr>
+                              <th>Kích thước</th>
+                              <td>54.5 x 35 x 22 cm</td>
+                            </tr>
+                            <tr>
+                              <th>Cân nặng</th>
+                              <td>3.27 kg</td>
+                            </tr>
+                            <tr>
+                              <th>Thương hiệu</th>
+                              <td>Mỹ</td>
+                            </tr>
+                            <tr>
+                              <th>Xuất xứ</th>
+                              <td>Made in China</td>
+                            </tr>
+                            <tr>
+                              <th>Bảo hành</th>
+                              <td>5 năm</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div class="p-4 flex justify-center">
+                        <button class="js-specifications-close text-primary hover:underline flex items-center">
+                          <i class="mr-2 fa-solid fa-arrow-left-long"></i>
+                          Xem tiếp sản phẩm
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </li>
               </ul>
             </div>
@@ -519,7 +733,7 @@
       <section class="mt-10">
         <div class="myContainer grid gap-8 grid-cols-12">
           <div class="col-span-12">
-            <div class="blur-content space-y-4">
+            <div id="manufacturer-content" class="blur-content hide space-y-4">
               <h2 class="text-xl text-heading font-bold">Hãng sản xuất</h2>
 
               <p>
@@ -544,15 +758,16 @@
 
             <div class="relative flex justify-center -top-1">
               <button
-                class="flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
+                toggle-target="#manufacturer-content"
+                class="toggleButton js-toggle flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
               >
-                Xem tất cả
+                <span>Xem tất cả</span>
                 <i class="text-sm fa-solid fa-chevron-down"></i>
               </button>
             </div>
           </div>
           <div class="col-span-12 lg:col-span-6">
-            <div class="blur-content space-y-4">
+            <div id="describe-content" class="blur-content hide space-y-4">
               <h2 class="text-xl text-heading font-bold">MÔ TẢ SẢN PHẨM</h2>
 
               <p>
@@ -577,9 +792,10 @@
 
             <div class="relative flex justify-center -top-1">
               <button
-                class="flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
+                toggle-target="#describe-content"
+                class="toggleButton js-toggle flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
               >
-                Xem tất cả
+                <span>Xem tất cả</span>
                 <i class="text-sm fa-solid fa-chevron-down"></i>
               </button>
             </div>
@@ -954,6 +1170,71 @@
           nextArrow:
             "<button type='button' class='!hidden slick-next pull-right xl:!block'><i class='fa-solid fa-chevron-right'></i></button>",
         });
+      });
+
+      $(".slider-single").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: true,
+        fade: false,
+        adaptiveHeight: true,
+        infinite: false,
+        useTransform: true,
+        speed: 400,
+        cssEase: "cubic-bezier(0.77, 0, 0.18, 1)",
+        prevArrow:
+          "<button type='button' class='slick-prev pull-left'><i class='text-3xl text-primary fa-solid fa-chevron-left'></i></button>",
+        nextArrow:
+          "<button type='button' class='slick-next pull-right'><i class='text-3xl text-primary fa-solid fa-chevron-right'></i></button>",
+      });
+
+      $(".slider-nav")
+        .on("init", function (event, slick) {
+          $(".slider-nav .slick-slide.slick-current").addClass("is-active");
+        })
+        .slick({
+          slidesToShow: 9,
+          slidesToScroll: 9,
+          dots: false,
+          focusOnSelect: false,
+          infinite: false,
+          responsive: [
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 5,
+                slidesToScroll: 5,
+              },
+            },
+            {
+              breakpoint: 640,
+              settings: {
+                slidesToShow: 4,
+                slidesToScroll: 4,
+              },
+            },
+            {
+              breakpoint: 420,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 3,
+              },
+            },
+          ],
+        });
+
+      $(".slider-single").on("afterChange", function (event, slick, currentSlide) {
+        $(".slider-nav").slick("slickGoTo", currentSlide);
+        var currrentNavSlideElem = '.slider-nav .slick-slide[data-slick-index="' + currentSlide + '"]';
+        $(".slider-nav .slick-slide.is-active").removeClass("is-active");
+        $(currrentNavSlideElem).addClass("is-active");
+      });
+
+      $(".slider-nav").on("click", ".slick-slide", function (event) {
+        event.preventDefault();
+        var goToSingleSlide = $(this).data("slick-index");
+
+        $(".slider-single").slick("slickGoTo", goToSingleSlide);
       });
     </script>
 

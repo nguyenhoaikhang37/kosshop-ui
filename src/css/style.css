@@ -1,10 +1,6 @@
 /* Handle hover mega menu */
-.mega-menu-item:hover ~ .mega-menu {
-  display: block;
-}
-
 .mega-menu:hover {
-  display: block;
+  display: block !important;
 }
 
 /* Custom gap spacing between rows */
@@ -38,6 +34,20 @@
   border: 1px solid white;
 }
 
+/* Custom border of small slide */
+.slick-active.is-active {
+  border: 2px solid #1074a5 !important;
+}
+
+/* Style for disabled button */
+.slick-disabled.slick-arrow {
+  cursor: auto;
+}
+
+.slick-disabled.slick-arrow i {
+  opacity: 0.5;
+}
+
 /* Responsive media queries for slick */
 /* Show 2.5 items on mobile */
 @media screen and (max-width: 769px) {
@@ -51,11 +61,18 @@
 }
 
 /* Custom blur bor detail product */
-.blur-content {
+.blur-content.hide {
   position: relative;
+  height: 200px;
+  overflow: hidden;
 }
 
-.blur-content::before {
+.blur-content.show {
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.blur-content.hide::before {
   content: "";
   display: block;
   background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 63.02%, #fff);
@@ -88,4 +105,80 @@
 
 .basic-table tr:nth-child(even) {
   background-color: #f8f7f7;
+}
+
+/* Custom dialog */
+/* The Modal (background) */
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal.full {
+  padding-top: 0;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+.modal-content.full {
+  width: 100%;
+  height: 100%;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .modal {
+    padding-top: 0;
+  }
+
+  .modal-content {
+    width: 100%;
+    height: 100%;
+  }
 }

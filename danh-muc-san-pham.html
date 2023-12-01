@@ -535,7 +535,7 @@
       <!-- DETAIL -->
       <section class="mt-10">
         <div class="myContainer">
-          <div class="blur-content">
+          <div id="detail-content" class="blur-content hide">
             <p>
               <a href="https://www.kosshop.vn/vali-keo/">
                 <strong>Vali kéo</strong>
@@ -545,13 +545,22 @@
               thời vali đẹp còn đại diện rõ ràng hơn cho phong cách thời trang, cá tính bản thân. Sở hữu một chiếc vali phù hợp với nhu cầu
               vô cùng quan trọng, dựa vào thương hiệu, chất liệu, mẫu mã, giá cả... Tìm hiểu chi tiết hơn cùng <strong>KOS Shop</strong>.
             </p>
+            <h2 class="text-heading font-bold text-xl my-2">1. Tổng hợp chất liệu vali kéo cao cấp trên thị trường hiện nay</h2>
+            <p>
+              Để xác định liệu một chiếc vali có là vali cao cấp hàng hiệu hay không, thì đặc điểm dễ quan sát nhất đó là chất liệu của
+              chiếc vali đó. Vali có thể được làm từ các chất liệu thông dụng như: nhựa, vải, da hoặc giả da hay thậm chí là khung nhôm. Với
+              sự đa dạng về chất liệu như vậy, bạn đừng lo lắng không biết nên mua loại nào vì khi mua vali du lịch tại KOSSHOP, khách hàng
+              sẽ được tư vấn tận tình dòng vali phù hợp với sở thích, nhu cầu sử dụng và đặc biệt là phù hợp với khoản ngân sách của khách
+              hàng đặt ra.
+            </p>
           </div>
 
           <div class="relative flex justify-center -top-1">
             <button
-              class="flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
+              toggle-target="#detail-content"
+              class="toggleButton js-toggle flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
             >
-              Xem tất cả
+              <span>Xem tất cả</span>
               <i class="text-sm fa-solid fa-chevron-down"></i>
             </button>
           </div>
