@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="https://cdn.kosshop.vn/upload/theme/images/favicon.png"
+      type="image/x-icon"
+      class="jsx-c332664a1f7e203"
+    />
+    <title>Vali kéo du lịch chính hãng CAO CẤP tiện lợi đủ SIZE giá TỐT.</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet" />
+
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./src/css/style.css" />
+
+    <!-- Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            keyframes: {
+              // zoom animation infinity
+              zoom2: {
+                "0%": { transform: "scale(1)" },
+                "50%": { transform: "scale(1.2)" },
+                "100%": { transform: "scale(1)" },
+              },
+            },
+            animation: {
+              zoom2: "zoom2 1s linear infinite",
+            },
+            colors: {
+              primary: "#1074a5",
+              secondary: "#cf3434",
+              dark: "#333",
+              heading: "#505F76",
+              arrow: "#c5c4c4",
+              greyLight: "#f2f2f2",
+              greyEE: "#d5dfee",
+              greyC4: "#c5c4c4",
+              greyBg: "#ddd",
+              fbColor: "#4267b2",
+              youtubeColor: "#c4302b",
+              blueLight: "#dcf6ff",
+              orange0e: "#f5810e",
+            },
+            boxShadow: {
+              box: "0 3px 5px -1px rgba(0,0,0,.08), 0 6px 10px 0 rgba(0,0,0,.08), 0 1px 18px 0 rgba(0,0,0,.08)",
+              header: "1px 1px 5px rgba(0,0,0,.15)",
+              red: "0 0 6px #e83a1f",
+            },
+          },
+          screens: {
+            sm: "640px",
+            // => @media (min-width: 640px) { ... }
+
+            md: "768px",
+            // => @media (min-width: 768px) { ... }
+
+            lg: "992px",
+            // => @media (min-width: 992px) { ... }
+
+            xl: "1200px",
+            // => @media (min-width: 1200px) { ... }
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        html {
+          font-family: "Roboto", sans-serif;
+        }
+      }
+
+      @layer components {
+        .myContainer {
+          @apply max-w-[650px] lg:max-w-[1146px] mx-auto px-[15px] sm:px-[20px];
+        }
+
+        .bg-gradient {
+          background: linear-gradient(90deg, #1074a5 4.72%, #1799d9 95.8%) 000;
+        }
+
+        .side-dialog {
+          @apply fixed top-0 right-0 bottom-0 w-[300px] transition-transform ease-in-out transform bg-white shadow-lg;
+          z-index: 1000;
+          transform: translateX(100%);
+        }
+
+        .backdrop {
+          @apply fixed top-0 left-0 right-0 bottom-0 w-full h-full transition-all ease-in-out z-[900];
+          background-color: rgba(0, 0, 0, 0.6);
+          opacity: 0;
+          visibility: hidden;
+        }
+
+        .side-dialog.show {
+          transform: translateX(0);
+        }
+
+        .side-dialog.show ~ .backdrop {
+          opacity: 1;
+          visibility: visible;
+        }
+
+        /* Style for section heading */
+        .section__heading {
+          font-size: 17.6px;
+          line-height: 40px;
+          height: 40px;
+          @apply text-white w-full lg:w-[300px] xl:w-[400px] relative pl-[60px] font-bold;
+        }
+
+        .section__heading::before {
+          transform: skewX(-40deg);
+          border-radius: 5px;
+          content: "";
+          position: absolute;
+          height: 100%;
+          left: 15px;
+          right: 15px;
+          z-index: -1;
+          @apply bg-gradient;
+        }
+
+        .section__heading::after {
+          content: url(https://www.kosshop.vn/images/logo-icon.svg);
+          position: absolute;
+          width: 52px;
+          height: 52px;
+          border-radius: 50%;
+          display: block;
+          border: 5px solid #fff;
+          z-index: 1;
+          bottom: 10px;
+          text-align: center;
+          font-size: 2.8rem;
+          line-height: 46px;
+          text-indent: 0;
+          left: 0;
+          @apply bg-primary;
+        }
+
+        /* Discount label */
+        .discount-label {
+          width: 100px;
+          height: 100px;
+          display: block;
+          border-radius: 50%;
+          position: absolute;
+          top: -50px;
+          right: -50px;
+          line-height: 45px;
+          padding: 50px 50px 5px 10px;
+          z-index: 100;
+          @apply text-white bg-secondary;
+        }
+
+        /* Custom slick library */
+        .slick-prev {
+          position: absolute;
+          z-index: 100;
+          left: 0;
+          top: 50%;
+          transform: translate(-100%, -50%);
+          padding: 16px;
+          font-size: 1.6rem;
+          @apply text-arrow;
+        }
+
+        .slick-next {
+          position: absolute;
+          z-index: 100;
+          right: 0;
+          top: 50%;
+          transform: translate(100%, -50%);
+          padding: 16px;
+          font-size: 1.6rem;
+          @apply text-arrow;
+        }
+      }
+    </style>
+
+    <!-- Scripts -->
+    <script src="./loadTemplates.js"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header id="header" class="fixed top-0 left-0 right-0 bg-gradient h-[56px] lg:h-[76px] z-[999]"></header>
+    <script>
+      load("#header", "./src/templates/header.html");
+    </script>
+
+    <main class="pt-[56px] lg:pt-[76px] xl:pt-[116px]">
+      <div id="sidebar" class="fixed top-[56px] xl:top-[76px] left-0 right-0 bg-white shadow-header z-[998] hidden xl:block"></div>
+      <script>
+        load("#sidebar", "./src/templates/sidebar.html");
+      </script>
+
+      <!-- BREADCRUMBS -->
+      <section>
+        <div class="myContainer">
+          <ul class="flex items-center gap-2">
+            <li class="text-sm text-primary">
+              <a href="/" class="block py-5">Trang chủ</a>
+            </li>
+            <li>
+              <i class="text-sm fa fa-chevron-right text-primary"></i>
+            </li>
+            <li class="text-sm text-primary">
+              <a href="/danh-muc-san-pham" class="block py-5">Vali kéo</a>
+            </li>
+            <li>
+              <i class="text-sm fa fa-chevron-right text-primary"></i>
+            </li>
+            <li class="text-sm text-primary">
+              <a href="/danh-muc-san-pham" class="block py-5">Vali Kéo Roncato</a>
+            </li>
+            <li>
+              <i class="text-sm fa fa-chevron-right text-primary"></i>
+            </li>
+            <li class="text-sm text-primary"><strong>Vali Roncato Butterfly size M (26 inch) - Magenta</strong></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- MAIN PRODUCT -->
+      <section>
+        <div class="myContainer">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-x-4">
+            <div class="flex flex-col gap-4 lg:col-span-5">
+              <div class="h-[300px]">
+                <img
+                  src="https://cdn.kosshop.vn/upload/plupload/2023/10/vali-modo-by-roncato-galaxy-size-s-20-inch-orchid4055.jpg"
+                  alt="Vali Modo by Roncato Space size S (20 inch) - Yellow hình sản phẩm 5"
+                  class="w-full h-full object-cover"
+                />
+              </div>
+
+              <div class="flex items-center gap-2 pl-4 bg-greyLight text-primary">
+                <a href="#!" class="flex items-center gap-6">
+                  <i class="text-lg fa fa-search-plus"></i>
+                  <span>BẤM PHÓNG TO NHIỀU HÌNH SẢN PHẨM</span>
+                </a>
+                <span class="ml-auto px-4 py-2 bg-[#ebeaea] text-dark">5/9</span>
+              </div>
+
+              <ul class="flex justify-center gap-4">
+                <li class="text-center">
+                  <span class="block py-2 border border-primary">
+                    <img
+                      src="https://cdn.kosshop.vn/upload/plupload/2023/10/vali-modo-by-roncato-galaxy-size-s-20-inch-orchid4055.jpg"
+                      alt="Vali Modo by Roncato Space size S (20 inch) - Orchid hình sản phẩm 1"
+                      width="90"
+                      height="60"
+                    />
+                  </span>
+                  <span class="text-xs">Hình sản phẩm</span>
+                </li>
+                <li class="w-[108px]">
+                  <a href="#!" class="text-[#0000ee] flex items-center text-center flex-col gap-2 bg-blueLight py-4">
+                    <i class="fa fa-info-circle"></i><span class="underline text-sm">Thông số kỹ thuật</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="lg:col-span-4">
+              <h1 class="text-lg text-heading font-semibold uppercase">Vali Modo by Roncato Space size S (20 inch) - Orchid</h1>
+
+              <div class="flex items-center gap-1 mt-2">
+                <i class="text-yellow-400 fa-solid fa-star"></i>
+                <i class="text-yellow-400 fa-solid fa-star"></i>
+                <i class="text-yellow-400 fa-solid fa-star"></i>
+                <i class="text-yellow-400 fa-solid fa-star"></i>
+                <span class="text-xs text-dark ml-1">12 đánh giá</span>
+              </div>
+
+              <div class="mt-2 flex flex-wrap items-center gap-x-4">
+                <p class="text-dark text-sm">Thương hiệu: <strong class="text-primary">Roncato</strong></p>
+
+                <p class="text-dark text-sm">Mã sản phẩm: <strong class="text-primary">V2MOGA-S5T-ORC</strong></p>
+              </div>
+
+              <div class="mt-4">
+                <div class="flex items-center gap-4">
+                  <strong class="text-[28px] font-bold text-primary">1,300,000đ</strong>
+                  <del class="text-heading">2,700,000₫</del>
+                  <strong class="px-2 py-1 text-sm rounded text-white bg-[#ed3324]">-52%</strong>
+                </div>
+                <span class="text-sm"> (Tiết kiệm: <span class="text-primary">1,400,000đ</span>) </span>
+              </div>
+
+              <div class="mt-4">
+                <h3 class="inline-block px-2 py-1 text-sm rounded text-white bg-[#ed3324]">
+                  <i class="mr-1 fa-solid fa-gift"></i>
+                  KHUYẾN MÃI - ƯU ĐÃI
+                </h3>
+
+                <ul class="mt-2 pl-6 py-2 pr-2 bg-[#F9F9FB] rounded list-disc space-y-1">
+                  <li>Miễn phí giao hàng trong bán kính 30km HCM</li>
+                  <li>Hàng chính hãng, đầy đủ CO, CQ</li>
+                  <li>Hỗ trợ thanh toán tại nhà</li>
+                  <li>Giao hàng trên toàn quốc</li>
+                  <li>Hỗ trợ trả góp 0%</li>
+                </ul>
+              </div>
+
+              <div class="mt-4 flex items-center gap-4">
+                <p class="text-xs text-heading font-bold">MÀU SẮC</p>
+                <ul class="flex items-center gap-2">
+                  <li class="border border-greyLight p-[3px]">
+                    <a href="#!"
+                      ><img
+                        loading="lazy"
+                        src="https://cdn.kosshop.vn/upload/images/2023/10/06/vali-modo-by-roncato-galaxy-size-s-20-inch-black-1696566761.jpg"
+                        alt="Đen"
+                        width="54"
+                        height="54"
+                    /></a>
+                  </li>
+                  <li class="border border-greyLight p-[3px]">
+                    <a href="#!"
+                      ><img
+                        loading="lazy"
+                        src="https://cdn.kosshop.vn/upload/images/2023/10/06/vali-modo-by-roncato-galaxy-size-s-20-inch-dark-lead-1696567314.jpg"
+                        alt="xanh lá"
+                        width="54"
+                        height="54"
+                    /></a>
+                  </li>
+                  <li class="border border-greyLight p-[3px]">
+                    <a href="#!"
+                      ><img
+                        loading="lazy"
+                        src="https://cdn.kosshop.vn/upload/images/2023/10/06/vali-modo-by-roncato-space-size-s-20-inch-yellow-1696567801.jpg"
+                        alt="Vàng"
+                        width="54"
+                        height="54"
+                    /></a>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="mt-4">
+                <div class="border-l-4 shadow border-primary text-sm text-heading pl-2 py-1">BLACK FRIDAY ĐỒNG GIÁ 1TR300 TỪ 27-30/11</div>
+              </div>
+
+              <div class="mt-4">
+                <a href="/cart" class="block rounded w-full text-white bg-secondary p-3 shadow-red cursor-pointer text-center">
+                  <div class="text-[22px] font-bold"><strong>MUA NGAY</strong></div>
+                  <div class="text-sm">Thanh toán COD, Visa/Master/JCB, Trả Góp</div>
+                </a>
+
+                <a
+                  rel="nofollow"
+                  href="tel:18008050"
+                  class="mt-3 flex items-center justify-center hover:underline text-primary gap-2 text-sm"
+                >
+                  <span class="w-[26px] h-[26px] rounded-full flex items-center justify-center bg-primary">
+                    <i class="text-sm text-white fa fa-phone"></i>
+                  </span>
+                  Hotline tư vấn, đặt hàng miễn phí 18008050
+                </a>
+
+                <a href="/cart" class="mt-3 block rounded w-full text-white bg-primary p-3 cursor-pointer text-center">
+                  <div class="text-lg font-bold"><strong>TRẢ GÓP QUA THẺ</strong></div>
+                  <div class="text-sm">Visa/Master/JCB</div>
+                </a>
+              </div>
+            </div>
+
+            <div class="lg:col-span-3 flex flex-col-reverse lg:flex-col gap-y-4">
+              <section class="pt-[20px] pb-3 px-3 border border-greyC4 rounded bg-greyLight">
+                <h3 class="text-orange0e text-lg font-bold">ĐANG CÓ HÀNG Ở</h3>
+                <ul class="mt-[10px] text-sm text-heading #f5810e space-y-1">
+                  <li>
+                    <span class="text-primary text-lg">&#8811;</span>
+                    <strong> Hà Nội Hoàn Kiếm:</strong>
+                    6B Trần Hưng Đạo ( còn 2 sản phẩm )
+                  </li>
+                  <li>
+                    <span class="text-primary text-xl">&#8811;</span>
+                    <strong> HÀ NỘI: </strong>
+                    140 Láng Đống Đa Hà Nội (gần ngã tư sở) ( còn 3 sản phẩm )
+                  </li>
+                  <li>
+                    <span class="text-primary text-xl">&#8811;</span>
+                    <strong> HCM Tân Bình: </strong>
+                    387 Trường Chinh P.14 Tân Bình ( còn 2 sản phẩm )
+                  </li>
+                </ul>
+              </section>
+
+              <section class="py-2 px-[10px] bg-secondary shadow-red rounded">
+                <h3 class="text-center text-white font-bold">ĐẶT HÀNG NHANH</h3>
+                <div class="mt-2">
+                  <form>
+                    <div class="flex">
+                      <div class="flex-1">
+                        <input
+                          class="w-full text-sm px-2 py-[2px] rounded-tl"
+                          type="text"
+                          placeholder="Nhập họ và tên"
+                          name="your-name"
+                          value=""
+                        />
+                        <input
+                          class="w-full mt-1 text-sm px-2 py-[2px] rounded-bl"
+                          type="tel"
+                          placeholder="Để lại số điện thoại tư vấn"
+                          name="your-phone"
+                          value=""
+                        />
+                      </div>
+                      <div class="flex-shrink-0 relative top-[1px]">
+                        <button class="text-white bg-primary px-[11px] py-[14px] rounded-r uppercase font-bold" type="submit">Đặt</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </section>
+
+              <section class="p-2 border border-greyC4 rounded">
+                <h3 class="text-center text-primary font-bold">
+                  Vì Sao Bạn Nên Chọn <br />
+                  KOSSHOP?
+                </h3>
+                <ul class="space-y-2 text-sm mt-2">
+                  <li class="flex gap-2 items-start">
+                    <span class="flex-shrink-0">
+                      <i class="text-lg text-primary fa-solid fa-shop"></i>
+                    </span>
+                    <span>Hệ thống cửa hàng <strong>lớn nhất</strong> Việt Nam</span>
+                  </li>
+                  <li class="flex gap-2 items-start">
+                    <span class="flex-shrink-0">
+                      <i class="text-lg text-primary fa-solid fa-ranking-star"></i>
+                    </span>
+                    <span>Hàng <strong>chính hãng</strong></span>
+                  </li>
+                  <li class="flex gap-2 items-start">
+                    <span class="flex-shrink-0">
+                      <i class="text-lg text-primary fa-solid fa-store"></i>
+                    </span>
+                    <span>Đại lý <strong>Nhà phân phối</strong> ủy quyền từ các hãng</span>
+                  </li>
+                  <li class="flex gap-2 items-start">
+                    <span class="flex-shrink-0">
+                      <i class="text-lg text-primary fa-solid fa-gears"></i>
+                    </span>
+                    <span>Hỗ trợ kỹ thuật <strong>trọn đời</strong> với <strong>đội ngũ KTV kinh nghiệm lâu năm</strong></span>
+                  </li>
+                  <li class="flex gap-2 items-start">
+                    <span class="flex-shrink-0">
+                      <i class="text-lg text-primary fa-solid fa-shield-heart"></i>
+                    </span>
+                    <span>Dịch vụ bảo hành, bảo trì sản phẩm nhanh <strong>số 1 Việt Nam</strong></span>
+                  </li>
+                  <li class="flex gap-2 items-start">
+                    <span class="flex-shrink-0">
+                      <i class="text-lg text-primary fa-solid fa-truck"></i>
+                    </span>
+                    <span>Giải pháp đồng bộ, trải nghiệm thực tế, giao hàng <strong>miễn phí 30km</strong></span>
+                  </li>
+                </ul>
+              </section>
+
+              <section
+                class="mt-4 pt-[25px] pb-[15px] px-[15px] bg-blueLight xl:fixed xl:top-1/2 xl:-translate-y-1/2 xl:right-[5%] xl:max-w-[264.5px] z-[10]"
+              >
+                <h3 class="text-[20px] font-bold text-dark">CHỈ CÓ TẠI KOSSHOP</h3>
+                <div class="mt-2 text-sm">
+                  <ul class="space-y-4">
+                    <li class="">Thương hiệu Ý, Mỹ chính hãng toàn cầu</li>
+                    <li class="text-primary">
+                      <strong>BẢO HÀNH MIỄN PHÍ LINH KIỆN SẢN PHẨM VĨNH VIỄN</strong> <i class="ml-1 fa-solid fa-shield-halved"></i>
+                    </li>
+                    <li class="">
+                      Đổi trong vòng 3 ngày<br />
+                      (hàng phải còn nguyên và chưa sử dụng)
+                    </li>
+                    <li>
+                      <a
+                        href="/lien-he/"
+                        class="border-2 border-primary py-2 px-6 text-primary text-center font-semibold rounded block hover:bg-primary hover:text-white transition-all ease-in-out"
+                      >
+                        Ghé showroom KOS <span class="ml-2">➔</span>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PRODUCT DESCRIPTION -->
+      <section class="mt-10">
+        <div class="myContainer grid gap-8 grid-cols-12">
+          <div class="col-span-12">
+            <div class="blur-content space-y-4">
+              <h2 class="text-xl text-heading font-bold">Hãng sản xuất</h2>
+
+              <p>
+                Ricardo Beverly Hills, gắn liền với lối sống Bờ Tây của nước Mỹ. Chúng tôi được thúc đẩy bởi sự sáng tạo, bị quyến rũ bởi
+                tinh thần của Bờ biển phía Tây nước Mỹ và bị ám ảnh bởi chất lượng.
+              </p>
+
+              <p>
+                Được thành lập bởi Richard “Ricardo” Gibbs vào năm 1978 tại Beverly Hills, California, thương hiệu Ricardo Beverly Hills là
+                chất xúc tác cho mọi thứ mà công ty đã trở thành 40 năm sau đó.
+              </p>
+
+              <p>
+                Ngày nay, chúng tôi là công ty hàng đầu toàn cầu chuyên về thiết kế, đổi mới và tiếp thị hành lý và phụ kiện du lịch. Mọi
+                thứ chúng tôi tạo ra đều dựa trên nỗi ám ảnh của chúng tôi về du lịch, thiết kế và phong cách cũng như khám phá thế giới.
+                Trụ sở chính của công ty chúng tôi được đặt tại khu vực Seattle rộng lớn hơn. Thông qua các thương hiệu độc quyền Ricardo
+                Beverly Hills, Stephanie Johnson, Skyway và American Explorer (cũng như các thương hiệu nhãn hiệu riêng), chúng tôi cam kết
+                giúp khách du lịch tận hưởng nhiều hơn các chuyến đi thông qua các giải pháp du lịch hấp dẫn của chúng tôi. Website
+                <strong><a href="https://www.ricardobeverlyhills.com/" target="_blank" title="RICARDO" type="RICARDO">RICARDO</a></strong>
+              </p>
+            </div>
+
+            <div class="relative flex justify-center -top-1">
+              <button
+                class="flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
+              >
+                Xem tất cả
+                <i class="text-sm fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-6">
+            <div class="blur-content space-y-4">
+              <h2 class="text-xl text-heading font-bold">MÔ TẢ SẢN PHẨM</h2>
+
+              <p>
+                Ricardo Beverly Hills, gắn liền với lối sống Bờ Tây của nước Mỹ. Chúng tôi được thúc đẩy bởi sự sáng tạo, bị quyến rũ bởi
+                tinh thần của Bờ biển phía Tây nước Mỹ và bị ám ảnh bởi chất lượng.
+              </p>
+
+              <p>
+                Được thành lập bởi Richard “Ricardo” Gibbs vào năm 1978 tại Beverly Hills, California, thương hiệu Ricardo Beverly Hills là
+                chất xúc tác cho mọi thứ mà công ty đã trở thành 40 năm sau đó.
+              </p>
+
+              <p>
+                Ngày nay, chúng tôi là công ty hàng đầu toàn cầu chuyên về thiết kế, đổi mới và tiếp thị hành lý và phụ kiện du lịch. Mọi
+                thứ chúng tôi tạo ra đều dựa trên nỗi ám ảnh của chúng tôi về du lịch, thiết kế và phong cách cũng như khám phá thế giới.
+                Trụ sở chính của công ty chúng tôi được đặt tại khu vực Seattle rộng lớn hơn. Thông qua các thương hiệu độc quyền Ricardo
+                Beverly Hills, Stephanie Johnson, Skyway và American Explorer (cũng như các thương hiệu nhãn hiệu riêng), chúng tôi cam kết
+                giúp khách du lịch tận hưởng nhiều hơn các chuyến đi thông qua các giải pháp du lịch hấp dẫn của chúng tôi. Website
+                <strong><a href="https://www.ricardobeverlyhills.com/" target="_blank" title="RICARDO" type="RICARDO">RICARDO</a></strong>
+              </p>
+            </div>
+
+            <div class="relative flex justify-center -top-1">
+              <button
+                class="flex items-center justify-center gap-2 text-primary h-12 w-full lg:w-[200px] max-w-full border rounded cursor-pointer border-primary hover:bg-primary hover:text-white transition-all ease-in-out"
+              >
+                Xem tất cả
+                <i class="text-sm fa-solid fa-chevron-down"></i>
+              </button>
+            </div>
+          </div>
+          <div class="col-span-12 lg:col-span-6 row-start-1 lg:row-start-auto">
+            <h2 class="text-xl text-heading font-bold">THÔNG SỐ KỸ THUẬT</h2>
+            <div class="mt-4">
+              <table class="basic-table">
+                <tbody>
+                  <tr>
+                    <th>Chất liệu</th>
+                    <td>PET &amp; PC FILM</td>
+                  </tr>
+                  <tr>
+                    <th>Model</th>
+                    <td>Ricardo&nbsp;Tioga 2.0</td>
+                  </tr>
+                  <tr>
+                    <th>Màu</th>
+                    <td>Wine</td>
+                  </tr>
+                  <tr>
+                    <th>Kích thước</th>
+                    <td>54.5 x 35 x 22 cm</td>
+                  </tr>
+                  <tr>
+                    <th>Cân nặng</th>
+                    <td>3.27 kg</td>
+                  </tr>
+                  <tr>
+                    <th>Thương hiệu</th>
+                    <td>Mỹ</td>
+                  </tr>
+                  <tr>
+                    <th>Xuất xứ</th>
+                    <td>Made in China</td>
+                  </tr>
+                  <tr>
+                    <th>Bảo hành</th>
+                    <td>5 năm</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REVIEWS FROM CUSTOMERS -->
+      <section class="mt-8">
+        <div class="myContainer">
+          <section>
+            <h2 class="uppercase text-heading text-lg font-bold">Đánh giá & Bình luận</h2>
+            <div class="flex justify-center gap-4 mt-4">
+              <div class="text-center">
+                <div class="flex items-center gap-1">
+                  <i class="text-yellow-400 text-xl fa-solid fa-star"></i>
+                  <i class="text-yellow-400 text-xl fa-solid fa-star"></i>
+                  <i class="text-yellow-400 text-xl fa-solid fa-star"></i>
+                  <i class="text-yellow-400 text-xl fa-solid fa-star"></i>
+                  <i class="text-yellow-400 text-xl fa-solid fa-star"></i>
+                </div>
+                <p>Đánh giá trung bình</p>
+                <p class="text-greyC4">(Có 13 đánh giá)</p>
+                <p class="text-3xl text-primary"><strong>4.8</strong></p>
+              </div>
+              <div>
+                <div class="text-sm flex items-center gap-2">
+                  <div>
+                    <span>5</span>
+                    <i class="text-slate-500 fa-solid fa-star"></i>
+                  </div>
+                  <div class="w-[70px] h-3 bg-grey-400 rounded-full relative z-[10]">
+                    <div class="w-[70px] h-3 bg-yellow-400 rounded-full absolute z-[20]"></div>
+                  </div>
+                  <div>10 đánh giá</div>
+                </div>
+
+                <div class="text-sm flex items-center gap-2">
+                  <div>
+                    <span>4</span>
+                    <i class="text-slate-500 fa-solid fa-star"></i>
+                  </div>
+                  <div class="w-[70px] h-3 bg-slate-200 rounded-full relative z-[10]">
+                    <div class="w-[30%] h-3 bg-yellow-400 rounded-full absolute z-[20]"></div>
+                  </div>
+                  <div>3 đánh giá</div>
+                </div>
+
+                <div class="text-sm flex items-center gap-2">
+                  <div>
+                    <span>3</span>
+                    <i class="text-slate-500 fa-solid fa-star"></i>
+                  </div>
+                  <div class="w-[70px] h-3 bg-slate-200 rounded-full relative z-[10]">
+                    <div class="w-[0%] h-3 bg-yellow-400 rounded-full absolute z-[20]"></div>
+                  </div>
+                  <div>0 đánh giá</div>
+                </div>
+
+                <div class="text-sm flex items-center gap-2">
+                  <div>
+                    <span>2</span>
+                    <i class="text-slate-500 fa-solid fa-star"></i>
+                  </div>
+                  <div class="w-[70px] h-3 bg-slate-200 rounded-full relative z-[10]">
+                    <div class="w-[0%] h-3 bg-yellow-400 rounded-full absolute z-[20]"></div>
+                  </div>
+                  <div>0 đánh giá</div>
+                </div>
+
+                <div class="text-sm flex items-center gap-2">
+                  <div>
+                    <span>1</span>
+                    <i class="text-slate-500 fa-solid fa-star"></i>
+                  </div>
+                  <div class="w-[70px] h-3 bg-slate-200 rounded-full relative z-[10]">
+                    <div class="w-[0%] h-3 bg-yellow-400 rounded-full absolute z-[20]"></div>
+                  </div>
+                  <div>0 đánh giá</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="mt-4">
+            <h2 class="uppercase text-heading text-lg font-bold">Chia sẻ nhận xét của bạn</h2>
+
+            <div class="mt-4 flex gap-x-4 items-center">
+              <p class="text-sm text-dark">Đánh giá của bạn về sản phẩm</p>
+              <div class="ml-8">
+                <div class="flex items-center gap-4">
+                  <div class="text-center cursor-pointer">
+                    <i class="text-yellow-400 text-2xl fa-solid fa-star"></i>
+                    <p class="text-greyC4">Không thích</p>
+                  </div>
+                  <div class="text-center cursor-pointer">
+                    <i class="text-yellow-400 text-2xl fa-solid fa-star"></i>
+                    <p class="text-greyC4">Tạm được</p>
+                  </div>
+                  <div class="text-center cursor-pointer">
+                    <i class="text-yellow-400 text-2xl fa-solid fa-star"></i>
+                    <p class="text-greyC4">Bình thường</p>
+                  </div>
+                  <div class="text-center cursor-pointer">
+                    <i class="text-yellow-400 text-2xl fa-solid fa-star"></i>
+                    <p class="text-greyC4">Hài lòng</p>
+                  </div>
+                  <div class="text-center cursor-pointer">
+                    <i class="text-yellow-400 text-2xl fa-solid fa-star"></i>
+                    <p class="text-blue-600">Tuyệt vời</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <form>
+                <p class="text-sm text-dark">
+                  Bạn đang băn khoăn cần tư vấn? Vui lòng để lại số điện thoại hoặc lời nhắn, KOSShop sẽ liên hệ trả lời bạn sớm nhất.
+                </p>
+
+                <div class="relative">
+                  <textarea name="message" rows="4" class="border border-greyC4 px-4 pt-2 pb-8 w-full h-full" placeholder=""></textarea>
+                  <span class="text-primary absolute bottom-2 left-4">
+                    <i class="fa-solid fa-camera"></i>
+                    Gửi ảnh
+                  </span>
+                </div>
+
+                <div class="border border-greyC4 p-2 bg-[#fcfcfc]">
+                  <div class="flex items-center flex-wrap gap-2">
+                    <button class="border border-greyC4 px-4 py-2 rounded-xl">Chất lượng sản phẩm tuyệt vời</button>
+                    <button class="border border-greyC4 px-4 py-2 rounded-xl">KOSShop phục vụ rất tốt</button>
+                    <button class="border border-greyC4 px-4 py-2 rounded-xl">Đóng gói sản phẩm đẹp và chắc chắn</button>
+                  </div>
+
+                  <div class="flex justify-between items-center mt-2">
+                    <input type="text" placeholder="Nhập tên của bạn" class="px-2 py-1 border border-greyC4" />
+                    <button class="px-4 py-2 bg-primary text-white rounded">Gửi đánh giá</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <div class="mt-4">
+              <div class="flex gap-4">
+                <button class="border-b-2 border-primary font-bold text-dark">Bình luận hay nhất</button>
+                <button class="text-dark border-b-2 border-greyC4">Mới nhất</button>
+              </div>
+
+              <div class="mt-4">
+                <!-- CUSTOMER COMMENT -->
+                <div class="flex flex-col gap-2">
+                  <div class="flex items-center gap-2">
+                    <span class="text-sm w-6 h-6 rounded bg-slate-400 flex items-center justify-center text-white">K</span>
+                    <span class="font-bold text-primary">Khang</span>
+                    <div class="flex items-center gap-1">
+                      <i class="text-yellow-400 text-sm fa-solid fa-star"></i>
+                      <i class="text-yellow-400 text-sm fa-solid fa-star"></i>
+                      <i class="text-yellow-400 text-sm fa-solid fa-star"></i>
+                      <i class="text-yellow-400 text-sm fa-solid fa-star"></i>
+                      <i class="text-yellow-400 text-sm fa-solid fa-star"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <p class="text-dark">Có hỗ trợ lắp đặt k</p>
+                  </div>
+                  <div class="flex items-center gap-4 text-sm">
+                    <button class="text-primary hover:underline">Trả lời</button>
+                    <button class="text-primary flex items-center gap-2 hover:underline">
+                      <i class="text-primary text-sm fa-regular fa-thumbs-up"></i> <span>Thích</span>
+                    </button>
+                    <span class="text-greyC4">1 tháng</span>
+                  </div>
+                </div>
+
+                <!-- SHOP COMMENT -->
+                <div class="flex flex-col gap-2 mt-4 py-2 px-4 bg-slate-100 rounded">
+                  <div class="text-primary font-bold">KOSSHOP</div>
+                  <div>
+                    <p class="text-dark">
+                      Chào chị Vy, <br />
+                      META có hỗ trợ lắp đặt trong nội thành Hà Nội và nội thành HCM nhé. Chị có nhu cầu mua hàng vui lòng cung cấp số điện
+                      thoại để bán hàng META liên hệ tư vấn cụ thể về sản phẩm ạ.
+                    </p>
+                  </div>
+                  <div class="flex items-center gap-4 text-sm">
+                    <button class="text-primary hover:underline">Trả lời</button>
+                    <button class="text-primary flex items-center gap-2 hover:underline">
+                      <i class="text-primary text-sm fa-regular fa-thumbs-up"></i> <span>Thích</span>
+                    </button>
+                    <span class="text-greyC4">1 tháng</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <!-- RELATED PRODUCTS -->
+      <section class="mt-8">
+        <div class="myContainer">
+          <h2 class="uppercase text-heading text-lg font-bold">Sản phẩm tương tự</h2>
+          <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 mt-4">
+            <div id="card-item-1">
+              <script>
+                load("#card-item-1", "./src/components/card-item-with-discount.html");
+              </script>
+            </div>
+
+            <div id="card-item-2">
+              <script>
+                load("#card-item-2", "./src/components/card-item.html");
+              </script>
+            </div>
+
+            <div id="card-item-3">
+              <script>
+                load("#card-item-3", "./src/components/card-item.html");
+              </script>
+            </div>
+
+            <div id="card-item-4">
+              <script>
+                load("#card-item-4", "./src/components/card-item-with-label.html");
+              </script>
+            </div>
+
+            <div id="card-item-5">
+              <script>
+                load("#card-item-5", "./src/components/card-item-with-label.html");
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WATCHED PRODUCTS -->
+      <section class="mt-8">
+        <div class="myContainer">
+          <h2 class="uppercase text-heading text-lg font-bold">Sản phẩm đã xem</h2>
+          <div class="grid grid-cols-2 gap-6 md:grid-cols-3 lg:grid-cols-5 mt-4">
+            <div id="card-item-6">
+              <script>
+                load("#card-item-6", "./src/components/card-item-with-discount.html");
+              </script>
+            </div>
+
+            <div id="card-item-7">
+              <script>
+                load("#card-item-7", "./src/components/card-item.html");
+              </script>
+            </div>
+
+            <div id="card-item-8">
+              <script>
+                load("#card-item-8", "./src/components/card-item.html");
+              </script>
+            </div>
+
+            <div id="card-item-9">
+              <script>
+                load("#card-item-9", "./src/components/card-item-with-label.html");
+              </script>
+            </div>
+
+            <div id="card-item-10">
+              <script>
+                load("#card-item-10", "./src/components/card-item-with-label.html");
+              </script>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERNATIONAL CUSTOMERS -->
+      <section id="international-customer" class="mt-10"></section>
+      <script>
+        load("#international-customer", "./src/templates/international-customer.html");
+      </script>
+
+      <!-- NEWS -->
+      <section id="news" class="mt-10"></section>
+      <script>
+        load("#news", "./src/templates/news.html");
+      </script>
+
+      <!-- DOMESTIC CUSTOMERS -->
+      <section id="domestic-customer" class="mt-10"></section>
+      <script>
+        load("#domestic-customer", "./src/templates/domestic-customer.html");
+      </script>
+
+      <!-- SERVICES -->
+      <section id="services" class="relative bg-gradient mt-[25px] lg:mt-[50px] py-[30px] lg:pt-10 lg:pb-[60px]"></section>
+      <script>
+        load("#services", "./src/templates/services.html");
+      </script>
+    </main>
+
+    <!-- FOOTER -->
+    <footer id="footer" class="text-sm text-heading bg-[#F2F7FF]"></footer>
+    <script>
+      load("#footer", "./src/templates/footer.html");
+    </script>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script type="text/javascript">
+      $(window).ready(function () {
+        $(".slider-customer").slick({
+          dots: false,
+          infinite: true,
+          speed: 500,
+          slidesToScroll: 1,
+          slidesToShow: 5,
+          responsive: [
+            {
+              breakpoint: 769,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 2,
+              },
+            },
+          ],
+          prevArrow:
+            "<button type='button' class='!hidden slick-prev pull-left xl:!block'><i class='fa-solid fa-chevron-left'></i></button>",
+          nextArrow:
+            "<button type='button' class='!hidden slick-next pull-right xl:!block'><i class='fa-solid fa-chevron-right'></i></button>",
+        });
+      });
+    </script>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
