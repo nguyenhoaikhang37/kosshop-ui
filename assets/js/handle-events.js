@@ -35,7 +35,7 @@ initJsToggle();
 const categoryNavbar = getEl("#category-navbar");
 
 function handleScrollCategoryNavbar() {
-  if (window.location.pathname !== "/pages/") {
+  if (window.location.pathname !== "/") {
     return;
   }
 
