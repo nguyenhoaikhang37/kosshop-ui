@@ -1,0 +1,302 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: "Roboto", sans-serif;
+  }
+}
+
+@layer components {
+  .myContainer {
+    @apply max-w-[650px] lg:max-w-[1146px] mx-auto px-[15px] sm:px-[20px];
+  }
+
+  .bg-gradient {
+    background: linear-gradient(90deg, #1074a5 4.72%, #1799d9 95.8%) 000;
+  }
+
+  .side-dialog {
+    @apply fixed top-0 right-0 bottom-0 w-[300px] transition-transform ease-in-out transform bg-white shadow-lg;
+    z-index: 1000;
+    transform: translateX(100%);
+  }
+
+  .backdrop {
+    @apply fixed top-0 left-0 right-0 bottom-0 w-full h-full transition-all ease-in-out z-[900];
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .side-dialog.show {
+    transform: translateX(0);
+  }
+
+  .side-dialog.show ~ .backdrop {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Style for section heading */
+  .section__heading {
+    font-size: 17.6px;
+    line-height: 40px;
+    height: 40px;
+    @apply text-white w-full lg:w-[300px] xl:w-[400px] relative pl-[60px] font-bold;
+  }
+
+  .section__heading::before {
+    transform: skewX(-40deg);
+    border-radius: 5px;
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 15px;
+    right: 15px;
+    z-index: -1;
+    @apply bg-gradient;
+  }
+
+  .section__heading::after {
+    content: url(https://www.kosshop.vn/images/logo-icon.svg);
+    position: absolute;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    display: block;
+    border: 5px solid #fff;
+    z-index: 1;
+    bottom: 10px;
+    text-align: center;
+    font-size: 2.8rem;
+    line-height: 46px;
+    text-indent: 0;
+    left: 0;
+    @apply bg-primary;
+  }
+
+  /* Discount label */
+  .discount-label {
+    width: 100px;
+    height: 100px;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    line-height: 45px;
+    padding: 50px 50px 5px 10px;
+    z-index: 100;
+    @apply text-white bg-secondary;
+  }
+
+  /* Custom slick library */
+  .slick-prev {
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 50%;
+    transform: translate(-100%, -50%);
+    padding: 16px;
+    font-size: 1.6rem;
+    @apply text-arrow;
+  }
+
+  .slick-next {
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    top: 50%;
+    transform: translate(100%, -50%);
+    padding: 16px;
+    font-size: 1.6rem;
+    @apply text-arrow;
+  }
+}
+
+/* Handle hover mega menu */
+.mega-menu:hover {
+  display: block !important;
+}
+
+/* Custom gap spacing between rows */
+.slick-track {
+  display: flex;
+  gap: 10px;
+}
+
+/* Custom dots style of slick library */
+.slick-dots {
+  position: absolute;
+  display: flex !important;
+  gap: 8px;
+  bottom: 10px;
+  left: 50%;
+}
+
+.slick-dots li button {
+  width: 7px;
+  height: 7px;
+  background-color: white;
+  border-radius: 50%;
+  font-size: 0px;
+  border: 0;
+}
+
+.slick-dots .slick-active button {
+  width: 25px;
+  background: transparent;
+  border-radius: 12px;
+  border: 1px solid white;
+}
+
+/* Custom border of small slide */
+.slick-active.is-active {
+  border: 2px solid #1074a5 !important;
+}
+
+/* Style for disabled button */
+.slick-disabled.slick-arrow {
+  cursor: auto;
+}
+
+.slick-disabled.slick-arrow i {
+  opacity: 0.5;
+}
+
+/* Responsive media queries for slick */
+/* Show 2.5 items on mobile */
+@media screen and (max-width: 769px) {
+  .slick-list {
+    padding: 0 10% 0 0 !important;
+  }
+
+  .slider-banner .slick-list {
+    padding: 0 !important;
+  }
+}
+
+/* Custom blur bor detail product */
+.blur-content.hide {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.blur-content.show {
+  height: auto;
+  margin-bottom: 12px;
+}
+
+.blur-content.hide::before {
+  content: "";
+  display: block;
+  background: linear-gradient(180deg, hsla(0, 0%, 100%, 0) 63.02%, #fff);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+}
+
+/* Style table */
+.basic-table {
+  width: 100%;
+  font-size: 15px;
+}
+
+.basic-table table,
+.basic-table tbody,
+.basic-table td,
+.basic-table th {
+  border: none;
+}
+
+.basic-table th {
+  width: 35%;
+  padding: 10px 5px 10px 15px;
+  color: #c5c4c4;
+  text-align: left;
+}
+
+.basic-table tr:nth-child(even) {
+  background-color: #f8f7f7;
+}
+
+/* Custom dialog */
+/* The Modal (background) */
+.modal {
+  opacity: 0;
+  visibility: hidden;
+  /* display: none; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1000; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.modal.full {
+  padding-top: 0;
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 50%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+.modal-content.full {
+  width: 100%;
+  height: 100%;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .modal {
+    padding-top: 0;
+  }
+
+  .modal-content {
+    width: 100%;
+    height: 100%;
+  }
+}
